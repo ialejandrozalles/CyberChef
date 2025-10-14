@@ -2,8 +2,7 @@
  * @author Izai Alejandro Zalles Merino <zallesrene@gmail.com> (ialejandrozalles)
  * @copyright © 2025 Izai Alejandro Zalles Merino
  * @license Apache-2.0
- */
-
+        */
 import { decodeBase91 } from "../lib/Base91.mjs";
 import Operation from "../Operation.mjs";
 
@@ -23,6 +22,19 @@ class FromBase91 extends Operation {
         this.infoURL = "https://en.wikipedia.org/wiki/Binary-to-text_encoding#Encoding_standards";
         this.inputType = "string";
         this.outputType = "ArrayBuffer";
+        /* eslint-disable no-useless-escape */
+        this.checks = [
+            {
+                pattern:
+                    "^" +
+                    "[\\s0-9A-Za-z!#$%&()*+,./:;<=>?@\\\[\\\]\\^_`{|}~\"]*" +
+                    "[0-9A-Za-z!#$%&()*+,./:;<=>?@\\\[\\\]\\^_`{|}~\"]{15}" +
+                    "[\\s0-9A-Za-z!#$%&()*+,./:;<=>?@\\\[\\\]\\^_`{|}~\"]*" +
+                    "$",
+                args: []
+            }
+            /* eslint-enable no-useless-escape */
+        ];
     }
 
     /**
